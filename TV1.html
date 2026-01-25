@@ -43,11 +43,10 @@
       background: #fff;
     }
 
-    /* Shrink 2nd and 3rd columns to remove extra bottom space */
-    .menu-area > .menu-column:nth-child(2),
-    .menu-area > .menu-column:nth-child(3) {
-      align-self: start;
-      height: 74%;
+    /* Allow all columns to fill available space */
+    .menu-area > .menu-column {
+      height: auto;
+      max-height: 100%;
     }
 
     .menu-column {
@@ -55,7 +54,8 @@
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
+      overflow-y: auto;
+      min-width: 0;
     }
 
     .menu-column h2 {

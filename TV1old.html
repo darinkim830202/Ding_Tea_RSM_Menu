@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TV1 - Menu Display</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .tv-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+
+    .title-area {
+      height: 15%;
+      background: linear-gradient(90deg, #ff1493 0%, #ff69b4 25%, #ff1493 50%, #ff69b4 75%, #ff1493 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 72px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-area {
+      height: 85%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    /* Shrink 2nd and 3rd columns to remove extra bottom space */
+    .menu-area > .menu-column:nth-child(2),
+    .menu-area > .menu-column:nth-child(3) {
+      align-self: start;
+      height: 74%;
+    }
+
+    .menu-column {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      min-width: 0;
+    }
+
+    .menu-column h2 {
+      margin-top: 0;
+      font-size: 28px;
+      color: #333;
+      border-bottom: 3px solid #ff1493;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      animation: borderColorChange 3s ease-in-out infinite;
+    }
+
+    @keyframes borderColorChange {
+      0% {
+        border-bottom-color: #ff1493;
+      }
+
+      50% {
+        border-bottom-color: #ff69b4;
+      }
+
+      100% {
+        border-bottom-color: #ff1493;
+      }
+    }
+
+    .menu-item {
+      font-size: 20px;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-item span:first-child > span:first-child {
+      display: inline-block;
+      min-width: 24px;
+      margin-right: 8px;
+    }
+
+    .double-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .double-item {
+      font-size: 20px;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .falling-heart {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      to {
+        top: 1100px;
+        transform: translateX(50px) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tv-container">
+    <div class="title-area">💕 Ding Tea RSM - Drink Menu 💖</div>
+    <div class="menu-area">
+      <div class="menu-column">
+        <h2><span>Fresh Tea</span><span style="float: right">$3.50</span></h2>
+        <div class="menu-item"><span><span style="margin-right: 8px"> </span>Assam Black Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span><span style="margin-right: 8px"> </span>Jasmine Green Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span><span style="margin-right: 8px"> </span>Oolong Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Thai Iced Tea</span><span style="float: right;">$5.45</span></div>
+        
+        <div style="padding: 8px 0"></div>
+
+        <h2><span>Flavored Tea (Black/Green)</span><span style="float: right">$5.45</span></h2>
+        <div class="double-grid">
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Peach Flavored Tea<span style="display: inline-flex; align-items: center; margin-left: 8px;"><img src="Image/star.jpg" alt="Star" style="height: 20px; width: 20px;" /></span></span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Blueberry Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Mango Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Pineapple Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Passion Fruit Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Kiwi Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Lychee Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Green Apple Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Strawberry Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Rose Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Guava Flavored Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Winter Melon Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Honey Flavored Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Winter Melon Green Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Grapefruit Flavored Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Orange Flavored Tea</span></div>
+        </div>
+
+        <div style="padding: 8px 0"></div>
+
+        <h2><span>Lemon Iced Tea<span style="display: inline-flex; align-items: center; margin-left: 8px;"><img src="Image/New.png" alt="New" style="height: 20px; width: 20px;" /></span></span><span style="float: right">$5.75</span></h2>
+        <div class="menu-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Kumquat Lemon Iced Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Peach Lemon Iced Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Strawberry Peach Lemon Iced Tea</span><span style="float: right"> </span></div>
+      </div>
+
+      <div class="menu-column">
+        <h2><span>Classic Milk Tea</span><span style="float: right">$5.45</span></h2>
+        <div class="menu-item"><span><span style="margin-right: 8px"> </span>Signature Milk Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span><span style="margin-right: 8px"> </span>Jasmine Green Milk Tea</span><span style="float: right"> </span></div>
+        <div class="menu-item"><span><span style="margin-right: 8px"> </span>Pheonix Oolong Milk Tea</span><span style="float: right"> </span></div>
+
+        <div style="padding: 8px 0"></div>
+
+        <h2><span>Milk Tea</span><span style="float: right">$5.45</span></h2>
+        <div class="double-grid">
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Brown Sugar Milk Tea<span style="display: inline-flex; align-items: center; margin-left: 8px;"><img src="Image/star.jpg" alt="Star" style="height: 20px; width: 20px;" /></span></span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Lavender Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Taro Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Rose Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Thai Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Almond Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Matcha Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Hokkaido Black Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Chocolate Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Vanilla Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Winter Melon Milk Tea<span style="display: inline-flex; align-items: center; margin-left: 8px;"><img src="Image/star.jpg" alt="Star" style="height: 20px; width: 20px;" /></span></span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Hazelnut Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Hokkaido Oolong Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Honey Milk Tea<span style="display: inline-flex; align-items: center; margin-left: 8px;"><img src="Image/star.jpg" alt="Star" style="height: 20px; width: 20px;" /></span></span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Coffee Milk Tea</span></div>
+        </div>
+      </div>
+
+      <div class="menu-column">
+        <h2><span>Fruit Milk Tea</span><span style="float: right">$5.45</span></h2>
+        <div class="double-grid">
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Strawberry Milk Tea<span style="display: inline-flex; align-items: center; margin-left: 8px;"><img src="Image/star.jpg" alt="Star" style="height: 20px; width: 20px;" /></span></span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Blueberry Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Mango Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Peach Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Lychee Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Guava Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Honeydew Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Apple Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Passion Fruit Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Grapefruit Milk Tea</span></div>
+          <div class="double-item"><span><span style="margin-right: 8px; display: inline-block; width: 20px; height: 20px;"></span>Coconut Milk Tea</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Pineapple Milk Tea</span></div>
+        </div>
+
+        <div style="padding: 8px 0"></div>
+
+        <h2><span>Yakult/Yogurt</span><span style="float: right">$5.75</span></h2>
+        <div class="double-grid">
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Strawberry Yakult/Yogurt</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Green Tea Yakult/Yogurt</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Lychee Yakult/Yogurt</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Peach Yakult/Yogurt</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Mango Yakult/Yogurt</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Grapefruit Yakult/Yogurt</span></div>
+          <div class="double-item"><span style="display: inline-flex; align-items: center; gap: 8px;"><img src="Image/Ice.jpg" alt="Ice" style="height: 20px; width: 20px;" />Passion Fruit Yakult/Yogurt</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="falling-heart" style="left: 5%; animation-duration: 8s; animation-delay: 0s;">💕</div>
+  <div class="falling-heart" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">💖</div>
+  <div class="falling-heart" style="left: 25%; animation-duration: 9s; animation-delay: 4s;">💗</div>
+  <div class="falling-heart" style="left: 35%; animation-duration: 11s; animation-delay: 1s;">💕</div>
+  <div class="falling-heart" style="left: 45%; animation-duration: 8.5s; animation-delay: 3s;">💖</div>
+  <div class="falling-heart" style="left: 55%; animation-duration: 9.5s; animation-delay: 0.5s;">💗</div>
+  <div class="falling-heart" style="left: 65%; animation-duration: 10.5s; animation-delay: 2.5s;">💕</div>
+  <div class="falling-heart" style="left: 75%; animation-duration: 8s; animation-delay: 4.5s;">💖</div>
+  <div class="falling-heart" style="left: 85%; animation-duration: 9s; animation-delay: 1.5s;">💗</div>
+  <div class="falling-heart" style="left: 95%; animation-duration: 10s; animation-delay: 3.5s;">💕</div>
+  <img src="Image/Adjustment.png" alt="Adjustment" style="position: absolute; left: 655px; top: 845px; z-index: 1000; transform: scale(0.92); transform-origin: top left;" />
+  <script src="script.js"></script>
+</body>
+
+</html>

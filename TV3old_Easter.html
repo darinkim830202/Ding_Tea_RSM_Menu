@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TV3 - Easter Menu Display</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #f5e6f0;
+    }
+    
+    .tv-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .title-area {
+      height: 15%;
+      background: linear-gradient(90deg, #ff85e3 0%, #FFB6DE 25%, #FFD700 50%, #FFB6DE 75%, #ff85e3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 72px;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    }
+    
+    .menu-area {
+      height: 85%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+      background: #fff;
+    }
+    
+    .menu-column {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .menu-column h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #333;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    
+    .menu-item {
+      font-size: 20px;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .menu-item span:first-child > span:first-child {
+      display: inline-block;
+      min-width: 24px;
+      margin-right: 8px;
+    }
+    
+    .topping-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    
+    .topping-item {
+      font-size: 20px;
+      padding: 6px 10px;
+      border-bottom: 1px solid #eee;
+      color: #555;
+    }
+    
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .falling-heart {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      to {
+        top: 1100px;
+        transform: translateX(50px) rotate(360deg);
+      }
+    }
+    
+    .drink-image {
+      width: 100%;
+      height: calc(100% - 60px);
+      background: white;
+      border: 3px solid #ff85e3;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="tv-container">
+    <div class="title-area">
+      🌷 Ding Tea RSM - Top 10 🐰 🧺
+    </div>
+    <div class="menu-area">
+      <div class="menu-column">
+        <h2><span>1 - Brown Sugar Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Brown_Sugar_Milk_Tea.png" alt="Brown Sugar Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>2 - Signature Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Signature_Milk_Tea.png" alt="Signature Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>3 - Peach Flavored Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Peach_Flavored_Tea.png" alt="Peach Flavored Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>4 - Taro Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Taro_Milk_Tea.png" alt="Taro Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>5 - Strawberry Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Strawberry_Milk_Tea.png" alt="Strawberry Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>6 - Thai Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Thai_Milk_Tea.png" alt="Thai Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>7 - Jasmine Green Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Jasmine_Green_Milk_Tea.png" alt="Jasmine Green Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>8 - Mango Flavored Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Mango_Flavored_Tea.png" alt="Mango Flavored Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>9 - Matcha Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Matcha_Milk_Tea.png" alt="Matcha Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+      <div class="menu-column">
+        <h2><span>10 - Winter Melon Milk Tea</span></h2>
+        <div class="drink-image"><img src="https://raw.githubusercontent.com/darinkim830202/Ding_Tea_RSM_Menu/main/Image/WebTop10/_Winter_Melon_Milk_Tea.png" alt="Winter Melon Milk Tea" style="width: 90%; height: 90%; object-fit: cover; border-radius: 8px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="falling-heart" style="left: 5%; animation-duration: 8s; animation-delay: 0s;">🐰</div>
+  <div class="falling-heart" style="left: 25%; animation-duration: 9s; animation-delay: 4s;">🌷</div>
+  <div class="falling-heart" style="left: 35%; animation-duration: 11s; animation-delay: 1s;">🌸</div>
+  <div class="falling-heart" style="left: 45%; animation-duration: 8.5s; animation-delay: 3s;">🐥</div>
+  <div class="falling-heart" style="left: 55%; animation-duration: 9.5s; animation-delay: 0.5s;">🥚</div>
+  <div class="falling-heart" style="left: 65%; animation-duration: 10.5s; animation-delay: 2.5s;">🥕</div>
+  <div class="falling-heart" style="left: 75%; animation-duration: 8s; animation-delay: 4.5s;">🐣</div>
+  <div class="falling-heart" style="left: 85%; animation-duration: 9s; animation-delay: 1.5s;">🌸</div>
+  <div class="falling-heart" style="left: 95%; animation-duration: 10s; animation-delay: 3.5s;">🐰</div>
+  <script src="script.js"></script>
+</body>
+</html>

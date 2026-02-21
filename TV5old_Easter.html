@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TV5 - Easter Slideshow</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #f5e6f0;
+    }
+    
+    .tv-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .title-area {
+      height: 15%;
+      background: linear-gradient(90deg, #ff85e3 0%, #FFB6DE 25%, #FFD700 50%, #FFB6DE 75%, #ff85e3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 72px;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    }
+    
+    .menu-area {
+      height: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .slideshow-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: fadeIn 0.5s;
+    }
+    
+    .slide.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .menu-column {
+      display: none;
+    }
+    
+    .menu-column h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #333;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    
+    .menu-item {
+      font-size: 20px;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .menu-item span:first-child > span:first-child {
+      display: inline-block;
+      min-width: 24px;
+      margin-right: 8px;
+    }
+    
+    .topping-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    
+    .topping-item {
+      font-size: 20px;
+      padding: 6px 10px;
+      border-bottom: 1px solid #eee;
+      color: #555;
+    }
+    
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .falling-heart {
+      position: absolute;
+      top: -50px;
+      font-size: 30px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      to {
+        top: 1100px;
+        transform: translateX(50px) rotate(360deg);
+      }
+    }
+    
+    .drink-image {
+      width: 100%;
+      height: calc(100% - 60px);
+      background: white;
+      border: 3px solid #dc143c;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="tv-container">
+    <div class="title-area">
+      🌷 Ding Tea RSM - Happy Easter 🐰 🧺
+    </div>
+    <div class="menu-area">
+      <div class="slideshow-container">
+        <!-- Images will be dynamically loaded here by JavaScript -->
+      </div>
+    </div>
+  </div>
+    <div class="falling-heart" style="left: 5%; animation-duration: 8s; animation-delay: 0s;">🐰</div>
+    <div class="falling-heart" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">🐣</div>
+    <div class="falling-heart" style="left: 25%; animation-duration: 9s; animation-delay: 4s;">🌷</div>
+    <div class="falling-heart" style="left: 35%; animation-duration: 11s; animation-delay: 1s;">🌸</div>
+    <div class="falling-heart" style="left: 45%; animation-duration: 8.5s; animation-delay: 3s;">🐥</div>
+    <div class="falling-heart" style="left: 55%; animation-duration: 9.5s; animation-delay: 0.5s;">🥚</div>
+    <div class="falling-heart" style="left: 65%; animation-duration: 10.5s; animation-delay: 2.5s;">🥕</div>
+    <div class="falling-heart" style="left: 75%; animation-duration: 8s; animation-delay: 4.5s;">🐰</div>
+    <div class="falling-heart" style="left: 85%; animation-duration: 9s; animation-delay: 1.5s;">🌸</div>
+    <div class="falling-heart" style="left: 95%; animation-duration: 10s; animation-delay: 3.5s;">🐣</div>
+  <script>
+    // Slideshow configuration
+    const slideshowFolder = 'Image/SlideShow/';
+    const slideDuration = 5000; // 5 seconds per slide
+    let currentSlide = 0;
+    let slides = [];
+
+    // Initialize slideshow
+    function initSlideshow() {
+      // Fetch or load slide images
+      // This will cycle through images in the Image/SlideShow folder
+      loadSlides();
+      if (slides.length > 0) {
+        showSlide(0);
+        setInterval(nextSlide, slideDuration);
+      }
+    }
+
+    function loadSlides() {
+      // Get the slideshow container
+      const container = document.querySelector('.slideshow-container');
+      
+      // You can manually add slides or load them dynamically
+      // For now, we'll set up the structure for slides to be added
+      // Update this array with your actual image filenames
+      const imageFiles = [
+        'slide1.png',
+        'slide2.png',
+        'slide3.png'
+        // Add more filenames as needed
+      ];
+      
+      imageFiles.forEach((filename, index) => {
+        const img = document.createElement('img');
+        img.src = slideshowFolder + filename;
+        img.alt = 'Slide ' + (index + 1);
+        img.className = 'slide';
+        img.onerror = function() {
+          console.log('Image not found: ' + this.src);
+        };
+        container.appendChild(img);
+        slides.push(img);
+      });
+    }
+
+    function showSlide(n) {
+      if (slides.length === 0) return;
+      
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      
+      // Show current slide
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    // Start slideshow when page loads
+    document.addEventListener('DOMContentLoaded', initSlideshow);
+  </script>
+</body>
+</html>
